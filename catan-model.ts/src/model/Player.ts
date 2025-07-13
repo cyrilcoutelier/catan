@@ -1,42 +1,30 @@
-import type DevelopmentCardType from "./DevelopmentCardType";
+import type DevelopmentCardType from "./DevelopmentCard";
+import type { ResourceType } from "./Terrain";
 
-type Player = {
+type Prettify<T> = {
+	[K in keyof T]: T[K];
+} & {};
+
+type PlayerResources = Record<ResourceType, number>;
+type PLayerNextDevelopmentCard = Record<DevelopmentCardType, number>;
+type PlayerTradeCenters = Record<ResourceType, boolean>;
+
+type Player = Prettify<{
 	id: string;
 	name: string;
 	color: string;
-	resources: {
-		wood: number;
-		brick: number;
-		sheep: number;
-		wheat: number;
-		ore: number;
-	};
-	nextDevelopmentCard: null | DevelopmentCardType;
-	developmentCards: {
-		knight: number;
-		victoryPoint: number;
-		roadBuilding: number;
-		yearOfPlenty: number;
-		monopoly: number;
-	};
+	resources: PlayerResources;
+	nextDevelopmentCard: DevelopmentCardType;
+	developmentCards: PLayerNextDevelopmentCard;
 	bank: {
 		settlements: number;
 		cities: number;
 		roads: number;
 	};
-	tradeCenters: {
-		wood: boolean;
-		brick: boolean;
-		sheep: boolean;
-		wheat: boolean;
-		ore: boolean;
-		generic: boolean;
-	};
+	tradeCenters: PlayerTradeCenters;
 	longestRoad: number;
 	hasLongestRoad: boolean;
-	armySize: number;
-	hasLargestArmy: boolean;
 	victoryPoints: number;
-};
+}>;
 
 export type { Player as default };

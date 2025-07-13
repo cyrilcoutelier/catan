@@ -1,29 +1,41 @@
-type ForestTerrain = {
+import type { TwoDiceValue } from "./Dice";
+import type { Position } from "./Position";
+
+export type TerrainTriggerValue = Exclude<TwoDiceValue, 7>;
+
+export type BaseTerrain = {
+	position: Position;
+	type: string;
+	resource: string | null;
+	triggerValue: TerrainTriggerValue;
+};
+
+export type ForestTerrain = BaseTerrain & {
 	type: "forest";
 	resource: "wood";
 };
 
-type PastureTerrain = {
+export type PastureTerrain = BaseTerrain & {
 	type: "pasture";
 	resource: "wool";
 };
 
-type FieldTerrain = {
+export type FieldTerrain = BaseTerrain & {
 	type: "field";
 	resource: "grain";
 };
 
-type MountainTerrain = {
+export type MountainTerrain = BaseTerrain & {
 	type: "mountain";
 	resource: "ore";
 };
 
-type DesertTerrain = {
+export type DesertTerrain = BaseTerrain & {
 	type: "desert";
 	resource: null;
 };
 
-type HillTerrain = {
+export type HillTerrain = BaseTerrain & {
 	type: "hill";
 	resource: "brick";
 };
