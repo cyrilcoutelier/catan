@@ -1,4 +1,4 @@
-import type DevelopmentCardType from "./DevelopmentCard";
+import type DevelopmentCardType from "./DevelopmentCardType";
 import type { ResourceType } from "./Terrain";
 
 type Prettify<T> = {
