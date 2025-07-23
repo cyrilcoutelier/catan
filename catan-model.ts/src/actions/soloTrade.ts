@@ -18,6 +18,10 @@ export function run(game: Game, opts: Options) {
 		throw new GameError(ErrorCode.NOT_YOUR_TURN);
 	}
 
+	if (opts.givenResourceType === opts.receivedResourceType) {
+		throw new GameError(ErrorCode.TRADE_SAME_RESOURCE);
+	}
+
 	if (game.bank.resources[opts.receivedResourceType] <= 0) {
 		throw new GameError(ErrorCode.MISSING_CARD_IN_BANK);
 	}
