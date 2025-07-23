@@ -51,5 +51,6 @@ export const DEVELOPMENT_CARD_DISTRIBUTION: Record<
 export const START_NB_COLONIES = 5;
 export const START_NB_CITIES = 4;
 export const START_NB_ROADS = 15;
+export const NB_RESOURCES_IN_BANK = 19;
 
 export const DOCK_LOCATIONS: Position[] = [];
