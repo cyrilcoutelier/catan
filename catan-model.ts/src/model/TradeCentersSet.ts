@@ -1,4 +1,9 @@
 import type ResourceType from "./ResourceType";
+import {
+	DEFAULT_CHANGE_RATE,
+	SPECIFIC_CHANGE_RATE,
+	WILDCARD_CHANGE_RATE,
+} from "./Rules";
 import type TradeCenterType from "./TradeCenterType";
 import { WILDCARD } from "./TradeCenterType";
 
@@ -11,10 +16,10 @@ export function getChangeRate(
 	resourceType: ResourceType,
 ) {
 	if (tradeCenteresSet[resourceType]) {
-		return 2;
+		return SPECIFIC_CHANGE_RATE;
 	}
 	if (tradeCenteresSet[WILDCARD]) {
-		return 3;
+		return WILDCARD_CHANGE_RATE;
 	}
-	return 4;
+	return DEFAULT_CHANGE_RATE;
 }
