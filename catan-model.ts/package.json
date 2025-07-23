@@ -7,7 +7,8 @@
 		"tsc": "tsc --noEmit",
 		"biome": "biome check .",
 		"biome-fix": "pnpm biome --write",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"vitest-watch": "vitest",
+		"test": "pnpm vitest-watch --run"
 	},
 	"keywords": [],
 	"author": "",
@@ -19,6 +20,7 @@
 		"zod-openapi": "^5.1.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.1.1"
+		"@biomejs/biome": "^2.1.1",
+		"vitest": "^3.2.4"
 	}
 }
