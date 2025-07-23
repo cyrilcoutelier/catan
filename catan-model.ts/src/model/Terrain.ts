@@ -1,52 +1,25 @@
 import type { TwoDiceValue } from "./Dice";
-import type { Position } from "./Position";
-import type ResourceType from "./ResourceType";
-
+import ResourceType from "./ResourceType";
 export type TerrainTriggerValue = Exclude<TwoDiceValue, 7>;
 
-export type BaseTerrain = {
-	position: Position;
-	type: string;
-	resource: ResourceType | null;
-	triggerValue: TerrainTriggerValue;
-};
+const TerrainType = {
+	Forest: "forest",
+	Pasture: "pasture",
+	Field: "field",
+	Mountain: "mountain",
+	Desert: "desert",
+	Hill: "hill"
+} as const
 
-export type ForestTerrain = BaseTerrain & {
-	type: "forest";
-	resource: typeof ResourceType.Wood;
-};
+export const TerrainResource = {
+	Forest: ResourceType.Wood,
+	Pasture: ResourceType.Sheep,
+	Field: ResourceType.Wheat,
+	Mountain: ResourceType.Ore,
+	Desert: null,
+	Hill: ResourceType.Brick,
+} as const;
 
-export type PastureTerrain = BaseTerrain & {
-	type: "pasture";
-	resource: typeof ResourceType.Sheep;
-};
+type TerrainType = (typeof TerrainType)[keyof typeof TerrainType];
 
-export type FieldTerrain = BaseTerrain & {
-	type: "field";
-	resource: typeof ResourceType.Wheat;
-};
-
-export type MountainTerrain = BaseTerrain & {
-	type: "mountain";
-	resource: typeof ResourceType.Ore;
-};
-
-export type DesertTerrain = BaseTerrain & {
-	type: "desert";
-	resource: null;
-};
-
-export type HillTerrain = BaseTerrain & {
-	type: "hill";
-	resource: typeof ResourceType.Brick;
-};
-
-export type Terrain =
-	| ForestTerrain
-	| PastureTerrain
-	| FieldTerrain
-	| MountainTerrain
-	| DesertTerrain
-	| HillTerrain;
-
-export type TerrainType = Terrain["type"];
+export default TerrainType;

@@ -1,7 +1,8 @@
 import DevelopmentCardType from "./DevelopmentCardType";
 import type { Position } from "./Position";
 import ResourceType from "./ResourceType";
-import type { TerrainTriggerValue, TerrainType } from "./Terrain";
+import type { TerrainTriggerValue } from "./Terrain";
+import TerrainType from "./Terrain";
 import type TradeCenterType from "./TradeCenterType";
 import { WILDCARD } from "./TradeCenterType";
 

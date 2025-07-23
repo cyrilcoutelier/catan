@@ -2,6 +2,15 @@ import type DevelopmentCardType from "./DevelopmentCardType";
 import type ResourcesSet from "./ResourcesSet";
 import type TradeCentersSet from "./TradeCentersSet";
 
+const PlayerId = {
+	Red: "Red",
+	Blue: "Blue",
+	Green: "Green",
+	Yellow: "Yellow",
+} as const;
+
+export type PlayerId = (typeof PlayerId)[keyof typeof PlayerId];
+
 type Prettify<T> = {
 	[K in keyof T]: T[K];
 } & {};
@@ -27,3 +36,4 @@ type Player = Prettify<{
 }>;
 
 export type { Player as default };
+

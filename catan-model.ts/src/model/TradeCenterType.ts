@@ -1,6 +1,6 @@
 import type ResourceType from "./ResourceType";
 
-export const WILDCARD = "wildcard";
+export const WILDCARD = "wildcard" as const;
 
 type TradeCenterType = ResourceType | typeof WILDCARD;
 

@@ -4,7 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"tsc": "tsc --noEmit",
+		"build": "tsc --project tsconfig.json",
+		"build:watch": "tsc --project tsconfig.json --watch",
+		"build:clean": "rm -rf dist && tsc --project tsconfig.json",
+		"lint": "biome check .",
+		"lint-fix": "biome --write",
 		"biome": "biome check .",
 		"biome-fix": "pnpm biome --write",
 		"vitest-watch": "vitest",
@@ -13,7 +17,7 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"packageManager": "pnpm@10.7.1",
+	"packageManager": "pnpm@10.13.1",
 	"dependencies": {
 		"typescript": "^5.8.3",
 		"zod": "^4.0.5",

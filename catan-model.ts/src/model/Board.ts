@@ -1,13 +1,17 @@
 import type { Dock } from "./Dock";
+import {PlayerId} from "./Player";
 import type { Position } from "./Position";
-import type { Road } from "./Road";
-import type { Terrain } from "./Terrain";
+import type { TerrainTriggerValue } from "./Terrain";
+import TerrainType from "./Terrain";
 import type { Town } from "./Town";
 
 export type Board = {
-	terrains: Terrain[];
-	docks: Dock[];
-	towns: Town[];
-	roads: Road[];
+	terrains: Map<Position, {
+		type: TerrainType;
+		triggerValue: TerrainTriggerValue;
+	}>;
+	docks: Map<[Position, Position], Dock>;
+	towns: Map<[Position, Position, Position], Town>;
+	roads: Map<[Position, Position], PlayerId>;
 	robberPosition: Position;
 };

@@ -3,6 +3,5 @@ import type TradeCenterType from "./TradeCenterType";
 
 export type Dock = {
 	type: TradeCenterType;
-	position: Position;
 	portRation: number;
 };
