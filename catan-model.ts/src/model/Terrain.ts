@@ -1,33 +1,34 @@
 import type { TwoDiceValue } from "./Dice";
 import type { Position } from "./Position";
+import type ResourceType from "./ResourceType";
 
 export type TerrainTriggerValue = Exclude<TwoDiceValue, 7>;
 
 export type BaseTerrain = {
 	position: Position;
 	type: string;
-	resource: string | null;
+	resource: ResourceType | null;
 	triggerValue: TerrainTriggerValue;
 };
 
 export type ForestTerrain = BaseTerrain & {
 	type: "forest";
-	resource: "wood";
+	resource: typeof ResourceType.Wood;
 };
 
 export type PastureTerrain = BaseTerrain & {
 	type: "pasture";
-	resource: "wool";
+	resource: typeof ResourceType.Sheep;
 };
 
 export type FieldTerrain = BaseTerrain & {
 	type: "field";
-	resource: "grain";
+	resource: typeof ResourceType.Wheat;
 };
 
 export type MountainTerrain = BaseTerrain & {
 	type: "mountain";
-	resource: "ore";
+	resource: typeof ResourceType.Ore;
 };
 
 export type DesertTerrain = BaseTerrain & {
@@ -37,7 +38,7 @@ export type DesertTerrain = BaseTerrain & {
 
 export type HillTerrain = BaseTerrain & {
 	type: "hill";
-	resource: "brick";
+	resource: typeof ResourceType.Brick;
 };
 
 export type Terrain =
@@ -49,4 +50,3 @@ export type Terrain =
 	| HillTerrain;
 
 export type TerrainType = Terrain["type"];
-export type ResourceType = NonNullable<Terrain["resource"]>;

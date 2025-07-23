@@ -1,7 +1,9 @@
-import type { DockType } from "./Dock";
-import type { TerrainTriggerValue, TerrainType } from "./Terrain";
-import type { Position } from "./Position";
 import DevelopmentCardType from "./DevelopmentCardType";
+import type { Position } from "./Position";
+import ResourceType from "./ResourceType";
+import type { TerrainTriggerValue, TerrainType } from "./Terrain";
+import type TradeCenterType from "./TradeCenterType";
+import { WILDCARD } from "./TradeCenterType";
 
 export const CELL_DISTRIBUTION: Record<TerrainType, number> = {
 	desert: 1,
@@ -25,13 +27,13 @@ export const DICE_TOKEN_DISTRIBUTION: Record<TerrainTriggerValue, number> = {
 	12: 1,
 } as const;
 
-export const DOCK_DISTRIBUTION: Record<DockType, number> = {
-	wood: 1,
-	brick: 1,
-	wool: 1,
-	grain: 1,
-	ore: 1,
-	generic: 3,
+export const DOCK_DISTRIBUTION: Record<TradeCenterType, number> = {
+	[ResourceType.Brick]: 1,
+	[ResourceType.Ore]: 1,
+	[ResourceType.Sheep]: 1,
+	[ResourceType.Wheat]: 1,
+	[ResourceType.Wood]: 1,
+	[WILDCARD]: 3,
 } as const;
 
 export const DEVELOPMENT_CARD_DISTRIBUTION: Record<DevelopmentCardType, number> = {

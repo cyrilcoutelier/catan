@@ -1,19 +1,18 @@
 import type DevelopmentCardType from "./DevelopmentCardType";
-import type { ResourceType } from "./Terrain";
+import type ResourcesSet from "./ResourcesSet";
+import type TradeCentersSet from "./TradeCentersSet";
 
 type Prettify<T> = {
 	[K in keyof T]: T[K];
 } & {};
 
-type PlayerResources = Record<ResourceType, number>;
 type PLayerNextDevelopmentCard = Record<DevelopmentCardType, number>;
-type PlayerTradeCenters = Record<ResourceType, boolean>;
 
 type Player = Prettify<{
 	id: string;
 	name: string;
 	color: string;
-	resources: PlayerResources;
+	resources: ResourcesSet;
 	nextDevelopmentCard: DevelopmentCardType;
 	developmentCards: PLayerNextDevelopmentCard;
 	bank: {
@@ -21,7 +20,7 @@ type Player = Prettify<{
 		cities: number;
 		roads: number;
 	};
-	tradeCenters: PlayerTradeCenters;
+	tradeCenters: TradeCentersSet;
 	longestRoad: number;
 	hasLongestRoad: boolean;
 	victoryPoints: number;

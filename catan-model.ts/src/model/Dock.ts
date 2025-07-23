@@ -1,9 +1,8 @@
 import type { Position } from "./Position";
-import type { ResourceType } from "./Terrain";
+import type TradeCenterType from "./TradeCenterType";
 
-export type DockType = ResourceType | "generic";
 export type Dock = {
-	type: DockType;
+	type: TradeCenterType;
 	position: Position;
 	portRation: number;
 };
