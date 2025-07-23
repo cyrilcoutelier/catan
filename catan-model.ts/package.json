@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"tsc": "tsc --noEmit",
 		"biome": "biome check .",
 		"biome-fix": "pnpm biome --write",
 		"test": "echo \"Error: no test specified\" && exit 1"
