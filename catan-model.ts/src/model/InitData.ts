@@ -36,7 +36,10 @@ export const DOCK_DISTRIBUTION: Record<TradeCenterType, number> = {
 	[WILDCARD]: 3,
 } as const;
 
-export const DEVELOPMENT_CARD_DISTRIBUTION: Record<DevelopmentCardType, number> = {
+export const DEVELOPMENT_CARD_DISTRIBUTION: Record<
+	DevelopmentCardType,
+	number
+> = {
 	[DevelopmentCardType.RoadBuilding]: 2,
 	[DevelopmentCardType.YearOfPlenty]: 2,
 	[DevelopmentCardType.Monopoly]: 2,
