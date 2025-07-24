@@ -5,14 +5,14 @@ import {
 	SPECIFIC_CHANGE_RATE,
 	WILDCARD_CHANGE_RATE,
 } from "../../../src/model/Rules";
-import type TradeCentersSet from "../../../src/model/TradeCentersSet";
 import { getChangeRate } from "../../../src/model/TradeCentersSet";
 import { WILDCARD } from "../../../src/model/TradeCenterType";
+import createPlayerTradeCenters from "../../../src/setup/createPlayerTradeCenters";
 
 describe("getChangeRate", () => {
 	it("With no trade centers", () => {
 		// Given
-		const tradeCenteresSet = createTradeCentersSet();
+		const tradeCenteresSet = createPlayerTradeCenters();
 
 		// When
 		const changeRate = getChangeRate(tradeCenteresSet, ResourceType.Brick);
@@ -22,7 +22,7 @@ describe("getChangeRate", () => {
 	});
 	it("With wildcard", () => {
 		// Given
-		const tradeCenteresSet = createTradeCentersSet();
+		const tradeCenteresSet = createPlayerTradeCenters();
 		tradeCenteresSet[WILDCARD] = true;
 
 		// When
@@ -33,7 +33,7 @@ describe("getChangeRate", () => {
 	});
 	it("With specific resource", () => {
 		// Given
-		const tradeCenteresSet = createTradeCentersSet();
+		const tradeCenteresSet = createPlayerTradeCenters();
 		tradeCenteresSet[ResourceType.Brick] = true;
 
 		// When
@@ -44,7 +44,7 @@ describe("getChangeRate", () => {
 	});
 	it("With different resource and no wildcard", () => {
 		// Given
-		const tradeCenteresSet = createTradeCentersSet();
+		const tradeCenteresSet = createPlayerTradeCenters();
 		tradeCenteresSet[ResourceType.Ore] = true;
 
 		// When
@@ -55,7 +55,7 @@ describe("getChangeRate", () => {
 	});
 	it("With different resource and wildcard", () => {
 		// Given
-		const tradeCenteresSet = createTradeCentersSet();
+		const tradeCenteresSet = createPlayerTradeCenters();
 		tradeCenteresSet[ResourceType.Ore] = true;
 		tradeCenteresSet[WILDCARD] = true;
 
@@ -66,14 +66,3 @@ describe("getChangeRate", () => {
 		assert.strictEqual(changeRate, WILDCARD_CHANGE_RATE);
 	});
 });
-
-function createTradeCentersSet(): TradeCentersSet {
-	return {
-		[ResourceType.Brick]: false,
-		[ResourceType.Wood]: false,
-		[ResourceType.Sheep]: false,
-		[ResourceType.Wheat]: false,
-		[ResourceType.Ore]: false,
-		[WILDCARD]: false,
-	};
-}
