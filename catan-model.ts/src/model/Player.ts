@@ -1,4 +1,7 @@
+import type ConstructionsBank from "./ConstructionsBank";
+import type DevelopmentCardsSet from "./DevelopmentCardsSet";
 import type DevelopmentCardType from "./DevelopmentCardType";
+import type PlayerConstructions from "./PlayerConstructions";
 import type ResourcesSet from "./ResourcesSet";
 import type TradeCentersSet from "./TradeCentersSet";
 
@@ -15,25 +18,21 @@ type Prettify<T> = {
 	[K in keyof T]: T[K];
 } & {};
 
-type PLayerNextDevelopmentCard = Record<DevelopmentCardType, number>;
-
 type Player = Prettify<{
 	id: string;
 	name: string;
-	color: string;
+	color: string | null;
 	resources: ResourcesSet;
-	nextDevelopmentCard: DevelopmentCardType;
-	developmentCards: PLayerNextDevelopmentCard;
-	bank: {
-		settlements: number;
-		cities: number;
-		roads: number;
-	};
+	nextDevelopmentCard: DevelopmentCardType | null;
+	developmentCards: DevelopmentCardsSet;
+	constructionsBank: ConstructionsBank;
+	ownedConstructions: PlayerConstructions;
 	tradeCenters: TradeCentersSet;
 	longestRoad: number;
 	hasLongestRoad: boolean;
+	armySize: number;
+	hasLargestArmy: boolean;
 	victoryPoints: number;
 }>;
 
 export type { Player as default };
-
