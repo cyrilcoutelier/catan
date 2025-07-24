@@ -13,6 +13,13 @@ export type Options = {
 };
 
 export function run(game: Game, opts: Options) {
+	const player = game.players.get(opts.playerId);
+	if (!player) {
+		throw new GameError(ErrorCode.INVALID_PLAYER_ID, {
+			playerId: opts.playerId,
+		});
+	}
+
 	const currentPlayerId = game.turn.getCurrentPlayerId();
 	if (currentPlayerId !== opts.playerId) {
 		throw new GameError(ErrorCode.NOT_YOUR_TURN);
@@ -26,14 +33,7 @@ export function run(game: Game, opts: Options) {
 		throw new GameError(ErrorCode.MISSING_CARD_IN_BANK);
 	}
 
-	const player = game.players.get(opts.playerId);
-	if (!player) {
-		throw new GameError(ErrorCode.INVALID_PLAYER_ID, {
-			playerId: opts.playerId,
-		});
-	}
 	const changeRate = getChangeRate(player.tradeCenters, opts.givenResourceType);
-
 	if (player.resources[opts.givenResourceType] < changeRate) {
 		throw new GameError(ErrorCode.NOT_ENOUGH_RESOURCES);
 	}
