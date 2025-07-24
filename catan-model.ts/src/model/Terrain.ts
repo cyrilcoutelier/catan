@@ -8,8 +8,8 @@ const TerrainType = {
 	Field: "field",
 	Mountain: "mountain",
 	Desert: "desert",
-	Hill: "hill"
-} as const
+	Hill: "hill",
+} as const;
 
 export const TerrainResource = {
 	Forest: ResourceType.Wood,
